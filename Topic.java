@@ -1,5 +1,4 @@
 package test;
-import test.Agent;//איזה חבילות אני רוצה להשתמש
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,8 +11,9 @@ public class Topic {
     Topic(String name){
 
         this.name=name;
-        this.pubs = new ArrayList<>();//לא חייב לרשום אגנט בסוגריים זה ידוע שזה זה
-        this.subs = new ArrayList<>();
+        this.pubs = new ArrayList<>();
+        //A list of agents that will post for this topic
+        this.subs = new ArrayList<>();//A list of agents registered to listen to this topic
     }
 
     public void subscribe(Agent a){
@@ -23,8 +23,8 @@ public class Topic {
         subs.remove(a);
     }
 
-    public void publish(Message m) {//הדרכון מוכן
-        subs.parallelStream().forEach(a -> a.callback(name, m));//עובר על כל מי שבהאזנה
+    public void publish(Message m) {//for example: The passport is ready
+        subs.parallelStream().forEach(a -> a.callback(name, m));
 
     }
 
