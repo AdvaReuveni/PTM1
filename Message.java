@@ -33,8 +33,7 @@ public class Message {
         }
         catch (NumberFormatException nfe)
         {
-            System.out.println(nfe.getMessage());
+            return Double.NaN;
         }
-        return Double.NaN;
     }
 }
